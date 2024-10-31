@@ -1,0 +1,90 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JSTOR Home</title>
+    <link rel="stylesheet" href="assets/global_20240429T123451/build/global/css/global.css" />
+    <link rel="stylesheet" href="assets/search_20240909T192832/build/search/css/homepage.css" />
+</head>
+<body>
+    <main id="content" class="content">
+        <div class="main-content-without-margin">
+            <search-ui-pharos-layout class="negate-nav-bottom-margin homepage-container" row-gap="0">
+                <search-ui-pharos-heading level="1" preset="7" no-margin class="main-heading homepage-heading" slot="top">
+                    Explore the world&rsquo;s knowledge, cultures, and ideas
+                </search-ui-pharos-heading>
+                <search-ui-pharos-layout slot="top" class="search-layout" row-gap="0">
+                    <div class="search-form-and-link scope-selector">
+                        <form action="https://www.jstor.org/action/doBasicSearch" id="home-search-form" class="basic-search-form" method="get">
+                            <div id="query-builder-mount-point"></div>
+                        </form>
+                    </div>
+                </search-ui-pharos-layout>
+
+                <section class="collection-showcase--browse">
+                    <div class="collection-showcase__images">
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/great-wall-of-china.jpg" alt="Great Wall of China" loading="lazy" height="500" width="328" />
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/letter-to-ernest-hemingway.jpg" alt="Letter to Ernest Hemingway" loading="lazy" height="312" width="500" />
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/theatrical-qing-dynasty-robe.jpg" alt="Theatrical Qing Dynasty Robe" loading="lazy" height="322" width="500" />
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/birth-of-mahavira.jpg" alt="Birth of Mahavira" loading="lazy" height="187" width="500" />
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/youth-service-coalition-inc.jpg" alt="Youth Service Coalition Inc" loading="lazy" height="296" width="500" />
+                        <img src="assets/long-lived_20201006/images/browse-by-collection-cluster/filatios-on-horseback.jpg" alt="Filatios on Horseback" loading="lazy" height="329" width="500" />
+                    </div>
+                    <div class="collection-showcase__copy">
+                        <search-ui-pharos-heading level="2" preset="5" class="homepage-heading">Enrich your research with primary sources</search-ui-pharos-heading>
+                        <p>
+                            Explore millions of high-quality primary sources and images from around the world, including artworks, maps, photographs, and more.
+                        </p>
+                        <search-ui-pharos-button href="/site/collection-list/" variant="secondary">Browse by collection</search-ui-pharos-button>
+                    </div>
+                </section>
+
+                <section class="thematic-container">
+                    <search-ui-pharos-heading level="2" preset="5" class="homepage-heading">
+                        Take an interdisciplinary approach to <strong>immigration</strong>
+                    </search-ui-pharos-heading>
+                    <p>
+                        Explore migration issues through a variety of media types
+                    </p>
+                    <div class="thematic-slider">
+                        <div class="thematic-slider__track glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <li class="glide__slide glide__slide--thematic" data-slide-index="1"> 
+                                    <search-ui-pharos-image-card title="Santiago Armengod, “Alto Criminalizacion Migrantes -- With Or Without Papers,” 2013" link="/stable/community.10556441" source-type="Image">
+                                        <img slot="image" height="338" width="450" src="assets/long-lived_20201006/images/thematic-carousel/1.&#32;SAG_cover.jpg?lastUpdated=20230720" alt="Santiago Armengod, “Alto Criminalizacion Migrantes -- With Or Without Papers,” 2013" />
+                                        <div slot="metadata">Part of <search-ui-pharos-link href="/site/stlawu/street-art-graphics">Street Art Graphics</search-ui-pharos-link></div>
+                                    </search-ui-pharos-image-card>
+                                </li>
+                                <li class="glide__slide glide__slide--thematic" data-slide-index="2"> 
+                                    <search-ui-pharos-image-card title="The Labor Market Integration of Refugee Migrants in High-Income Countries" link="/stable/26873531" source-type="Article">
+                                        <img slot="image" height="450" width="315" src="assets/long-lived_20201006/images/thematic-carousel/1.&#32;JEP_cover.jpg?lastUpdated=20230720" alt="The Labor Market Integration of Refugee Migrants in High-Income Countries" />
+                                        <div slot="metadata">Part of <search-ui-pharos-link href="/journal/jeconpers">The Journal of Economic Perspectives, Vol. 34, No. 1 (Winter 2020)</search-ui-pharos-link></div>
+                                    </search-ui-pharos-image-card>
+                                </li>
+                                <!-- Additional thematic slides can be added here -->
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="collection-showcase--broaden">
+                    <search-ui-pharos-heading level="2" preset="5" class="homepage-heading">Broaden your research with images and primary sources</search-ui-pharos-heading>
+                    <ul>
+                        <li>
+                            <search-ui-pharos-image-card title="Bring your work to life with images" variant="promotional" link="/images">
+                                <img slot="image" height="600" width="800" src="assets/long-lived_20201006/images/new-avenues/work-with-images.jpg" alt="Architectural details and art from the Alhambra palace" loading="lazy" />
+                                <p slot="metadata">Harness the power of visual materials&mdash;explore more than 3 million images now on JSTOR.</p>
+                                <search-ui-pharos-button slot="metadata" href="/images" variant="secondary">Search for images</search-ui-pharos-button>
+                            </search-ui-pharos-image-card>
+                        </li>
+                        <!-- Additional broaden sections can be added here -->
+                    </ul>
+                </section>
+            </search-ui-pharos-layout>
+        </div>
+    </main>
+</body>
+</html>
+```

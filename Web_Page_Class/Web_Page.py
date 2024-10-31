@@ -1,5 +1,4 @@
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
 from Web_Page_Download.web_page_download_using_subprocess import download_web_page, download_web_page_mozilla_auth
 import webbrowser
 from pathlib import Path
@@ -8,16 +7,17 @@ from Prompt_Templates_Dir.prompt_template_img import template_images_removed
 from Prompt_Templates_Dir.prompt_template_highlights import template_highlights
 from Prompt_Templates_Dir.prompt_template_highlights_with_html_text import template_highlights_with_html_text
 from Web_Page_Class_Functions.Unstructured_HTML_Loader_Function import unstructured_html_loader
+from Web_Page_Class_Functions.LLM_Selection_Function import llm_selection
+from dotenv import load_dotenv, find_dotenv 
 
-llm = ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
+load_dotenv(find_dotenv(), override = True)
 
 class WebPage(): 
     template_images_removed: str
-    llm: ChatOpenAI
     
-    def __init__(self, url, download = True): 
+    def __init__(self, url, download = True, llm_model = "gpt-4o-mini"): 
+        self.llm = llm_selection(model = llm_model)
         self.url = url
-        # self.expected_output_dir = f"./wget_web_page/{self.url}/index.html"
         self.truncated_url = url.replace("https://", "")
         self.expected_output_dir = f"./wget_web_page/{self.truncated_url}/index.html"
         path_exists_bool = self.path_exists()
@@ -43,7 +43,6 @@ class WebPage():
         # self.html_text = html_text
         return output_dict["is_successful"], output_dict["web_page_dir"], html_text
     
-    
     def html_var(self, output_dir) -> str: 
         with open(output_dir, "r") as file: 
             html_output = file.read() 
@@ -59,7 +58,7 @@ class WebPage():
         html_original = self.html_var(self.output_dir)
         html_text = self.html_text
         prompt_template = ChatPromptTemplate.from_template(template = template_highlights_with_html_text) 
-        html_editor_chain_images_removed = prompt_template | llm
+        html_editor_chain_images_removed = prompt_template | self.llm
         output = html_editor_chain_images_removed.invoke(input = {"html_text": html_text, "original_html_code": html_original})
         edited_html = output.content
         with open(self.edited_page_dir, "w") as file: 
