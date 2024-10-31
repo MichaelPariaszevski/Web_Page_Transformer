@@ -3,27 +3,8 @@ from langchain_openai import ChatOpenAI
 from Web_Page_Download.web_page_download_using_subprocess import download_web_page, download_web_page_mozilla_auth
 import webbrowser
 from pathlib import Path
-
-template_images_removed = """
-You are an expert frontend developer specializing in html, css, and JavaScript frontend code as well as all of their frontend libraries such 
-as bootstrap. 
-
-
-You will be given a complete html code file. This file is verified to be viewable and runnable in a user's browser. 
-This means that the html code when viewed with the python function 'webbrowser.open('html_file')' displays the entire html code as well as any images, animated parts, JavaScript elements, etc. without any errors. 
-
-
-Your job is to return the provided html code in a similar ERROR FREE state (viewable and runnable in a browser) but without elements of the webpage such as images, animations, and pictures that may be distracting to an academic student user. 
-RETURN ONLY THE HTML CODE in a way that it is able to be run in a browser. Again, the html code should run ERROR FREE and without elements of the web page, ONLY images, animations, and pictures, that may be distracting to a student user. 
-
-PROVIDED HTML CODE: 
-----------------------------------------------------
-
-
-{original_html_code}
-
-
-"""
+from Prompt_Templates_Dir.prompt_template_org import template_original
+from Prompt_Templates_Dir.prompt_template_img import template_images_removed
 
 llm = ChatOpenAI(model = "gpt-4o-mini", temperature = 0)
 
@@ -46,8 +27,9 @@ class WebPage():
             self.downloaded = False 
             self.output_dir = None
         # self.output_dir = f"./wget_web_page/{url}/index.html"
+        self.edited_page_dir = f"./wget_web_page/{self.truncated_url}/index_edited.html"
     
-    def path_exists(self): 
+    def path_exists(self) -> bool: 
         p = Path(self.expected_output_dir) 
         return p.exists()
     
@@ -63,11 +45,18 @@ class WebPage():
     def view_page(self) -> None: 
         webbrowser.open(url = self.output_dir)
         
+    def view_edited_page(self) -> None: 
+        webbrowser.open(url = self.edited_page_dir)
+        
     def llm_edit_page(self) -> str: 
         html_original = self.html_var(self.output_dir)
         prompt_template_images_removed = ChatPromptTemplate.from_template(template = template_images_removed) 
         html_editor_chain_images_removed = prompt_template_images_removed | llm
-        html_editor_chain_images_removed.invoke(input = {"original_html_code": html_original})
+        output = html_editor_chain_images_removed.invoke(input = {"original_html_code": html_original})
+        edited_html = output.content
+        with open(self.edited_page_dir, "w") as file: 
+            file.write(edited_html)
+        return self.edited_page_dir
         
-# web_page_example = WebPage(url = "https://www.selenium.dev")
+        
         
