@@ -1,4 +1,4 @@
-from Web_Page import WebPage 
+from Web_Page_Class_and_Tests.Web_Page import WebPage 
 
 # example_web_page = WebPage(url = "https://www.selenium.dev") 
 

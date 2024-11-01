@@ -19,7 +19,7 @@ class WebPage():
         self.llm = llm_selection(model = llm_model)
         self.url = url
         self.truncated_url = url.replace("https://", "")
-        self.expected_output_dir = f"./wget_web_page/{self.truncated_url}/index.html"
+        self.expected_output_dir = f"./Web_Page_Class_and_Tests/wget_web_page/{self.truncated_url}/index.html"
         path_exists_bool = self.path_exists()
         if download and not path_exists_bool: 
             self.downloaded, self.output_dir, self.html_text = self.download_page()
@@ -31,7 +31,7 @@ class WebPage():
             self.downloaded = False 
             self.output_dir = None
         # self.output_dir = f"./wget_web_page/{url}/index.html"
-        self.edited_page_dir = f"./wget_web_page/{self.truncated_url}/index_edited.html"
+        self.edited_page_dir = f"./Web_Page_Class_and_Tests/wget_web_page/{self.truncated_url}/index_edited.html"
     
     def path_exists(self) -> bool: 
         p = Path(self.expected_output_dir) 
