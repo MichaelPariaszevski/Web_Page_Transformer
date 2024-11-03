@@ -162,4 +162,7 @@ cython_debug/
 #.idea/
 
 # misc 
-.env
+.env 
+Web_Page_Class_and_Tests/
+Web_Page_Class_and_Tests_2/html_links/
+HTML_Tests/

@@ -4,6 +4,7 @@ langchain-community
 langchain-openai
 langchain-groq
 langchain-ollama
+langgraph
 firecrawl-py 
 unstructured
 python-dotenv
