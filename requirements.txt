@@ -4,6 +4,7 @@ langchain-community
 langchain-openai
 langchain-groq
 langchain-ollama
+langchain-google-genai
 langgraph
 firecrawl-py 
 unstructured
